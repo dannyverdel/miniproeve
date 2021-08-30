@@ -1,4 +1,5 @@
 # Mac Files
 .DS_Store
 
-# Secret file .env
+# Secret file 
+.env
