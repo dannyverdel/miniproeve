@@ -26,6 +26,7 @@
 </head>
 
 <body>
+	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container-fluid">
 			<a href="index.html">
@@ -69,25 +70,12 @@
 	</div>
 
 	<script type="text/javascript">
-		var coll = document.getElementsByClassName("collapsible");
-		var i;
-
-		for (i = 0; i < coll.length; i++) {
-			coll[i].addEventListener("click", function () {
-				this.classList.toggle("active");
-				var content = this.nextElementSibling;
-				if (content.style.display === "block") {
-					content.style.display = "none";
-				} else {
-					content.style.display = "block";
-				}
-			});
-		}
-
+		// Data ophalen van API
 		fetch('https://miniproeve-nova.herokuapp.com/api/questions')
 			.then(response => response.json())
 			.then(data => {
 				for (let i = 0; i < data.length; i++) {
+					// Voor ieder element een card renderens
 					let card = document.createElement("div");
 					card.classList.add("card");
 

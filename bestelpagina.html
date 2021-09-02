@@ -33,6 +33,7 @@
 </head>
 
 <body>
+	<!--NAVBAR -->
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container-fluid">
 			<a href="index.html">
@@ -65,10 +66,12 @@
 
 	<script type="text/javascript">
 
+		// Data ophalen van API
 		fetch('https://miniproeve-nova.herokuapp.com/api/dishes')
 			.then(response => response.json())
 			.then(data => {
 				for (let i = 0; i < data.length; i++) {
+					// Voor ieder element een card naar scherm renderen
 					let card = document.createElement("div");
 					card.classList.add("card");
 
