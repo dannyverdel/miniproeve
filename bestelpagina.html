@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Bestelpagina</title>
+	<link rel="stylesheet" href="index.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+	<style>
+		#cards {
+			margin-top: 50px;
+		}
+
+		.card {
+			width: 60vw;
+			margin-bottom: 10px;
+			margin: 0 auto;
+			float: none;
+		}
+
+		span {
+			margin-bottom: 1px;
+		}
+
+		#button {
+			float: right;
+		}
+		.card-text {
+			font-size: 16px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container-fluid">
+			<a href="index.html">
+				<img id="logo" src="logo.png" alt="Houtskooltje">
+			</a>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html" style="color:white;">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="overons.html" style="color:white;">Over ons</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="bestelpagina.html" style="color:white;">Bestelpagina</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="faq.html" style="color:white;">FAQ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="barbecuetips.html" style="color:white;">Barbecue Tips</a>
+					</li>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="cards">
+	</div>
+
+	<script type="text/javascript">
+
+		fetch('https://miniproeve-nova.herokuapp.com/api/dishes')
+			.then(response => response.json())
+			.then(data => {
+				for (let i = 0; i < data.length; i++) {
+					let card = document.createElement("div");
+					card.classList.add("card");
+
+					card.innerHTML += `<div class='card-header'>${data[i].category}</div>`;
+					card.innerHTML += `<div class='card-body'><h5 class='card-title'>${data[i].name}</h5><p class='card-text'>${data[i].description}</p><span class='btn btn-primary'>${parseFloat(data[i].price.$numberDecimal).toFixed(2)}</span></div>`;
+
+					document.getElementById("cards").appendChild(card);
+				}
+			});
+	</script>
+
+</body>
+
+</html>
