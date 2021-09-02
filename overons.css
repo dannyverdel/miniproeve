@@ -21,7 +21,7 @@ li:hover {
 
 .collapse {
     margin-left: 40px;
-}
+}   
 
 body:before {
     content: '';
@@ -34,6 +34,10 @@ body:before {
     background-size: cover;
     filter:  saturate(1.3) blur(3px) brightness(80%);
     z-index: -9;
+}
+
+.card {
+    width: 400px;
 }
 
 .d-flex {
@@ -49,9 +53,10 @@ div {
 }
 
 .card-text {
-    font-size: 24px;
+    font-size: 19px;
 }
 
-button{
-    border-radius: 20px;
+
+.card-title {
+    font-size: 2rem;
 }
